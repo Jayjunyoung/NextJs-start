@@ -20,7 +20,8 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
   }
 }

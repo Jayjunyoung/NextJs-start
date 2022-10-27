@@ -1,8 +1,47 @@
-export default function Home() {
+import { useEffect, useState } from "react";
+import Seo from "../components/Seo";
 
+
+export default function Home() {
+    const [movies, setMovies] = useState();
+    useEffect(() => {
+        (async () => {
+        const { results } = await (await fetch(`/api/movies`)).json();
+        setMovies(results);
+        })();
+    }, []);
+    console.log(movies);
     return (//jsx 구문 적용가능: react임포트 안해도됌
-        <div>
-            <h1 className="active">Hello</h1>
+        <div className="container">
+            <Seo title="Home" />
+            {!movies && <h4>Loading...</h4>}
+            {movies?.map((movie) => (//?를 통해 영화가없으면실행안되게할것
+                <div className="movie" key={movie.id}>
+                    <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+                    <h4>{movie.original_title}</h4>
+                </div>
+        ))}
+        <style jsx>{`
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 20px;
+            gap: 20px;
+        }
+        .movie img {
+            max-width: 100%;
+            border-radius: 12px;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+        .movie:hover img {
+            transform: scale(1.05) translateY(-10px);
+        }
+        .movie h4 {
+            font-size: 18px;
+            text-align: center;
+        }
+        `}</style>
         </div>
     );//style jsx: 1.컴포넌트에 한정되어 적용  2. xxxx.module.css보다 유용함
 }
