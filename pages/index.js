@@ -1,20 +1,10 @@
-import NavBar from "../components/NavBar";
-
-
 export default function Home() {
 
     return (//jsx 구문 적용가능: react임포트 안해도됌
         <div>
-            <NavBar />
             <h1 className="active">Hello</h1>
-            <style jsx>{`
-                a {
-                    color: white;
-                }//nav의 컴포넌트 에서 a에 css적용한거만 적용
-                //위의 active도 작동안됌
-            `}</style>
         </div>
-    );
+    );//style jsx: 1.컴포넌트에 한정되어 적용  2. xxxx.module.css보다 유용함
 }
 
 //hydration: 초기상태의 컴포넌트로된 
