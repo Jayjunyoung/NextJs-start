@@ -10,5 +10,5 @@ export default function MyApp({ Component, pageProps }) {
     <Layout>
         <Component {...pageProps} />
     </Layout>
-    );
+    );//{...pageprops}을 넣는 이유->SSR과 연관 ex results
 }
