@@ -5,8 +5,8 @@ import Seo from "../components/Seo";
 //SSR에서 데이터 다받아오면 이제 여기서 결과 보여줌
 export default function Home({ results }) {
     const router = useRouter();
-    const onClick = (id, title) => {
-        router.push(`/movies/${title}/${id}`);
+    const onClick = (id, title) => {//url에 title담에 id가 나오도록
+        router.push(`/movies/${title}/${id}`);//[...params]으로 푸쉬
     };
     console.log({results});
     return (//jsx 구문 적용가능: react임포트 안해도됌
@@ -21,7 +21,7 @@ export default function Home({ results }) {
                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
                     <h4>
                         <Link href={`/movies/${movie.original_title}/${movie.id}`}>
-                    <a>{movie.original_title}</a>
+                            <a>{movie.original_title}</a>
                         </Link>
                     </h4>
                 </div>
