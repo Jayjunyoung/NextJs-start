@@ -13,7 +13,7 @@ export default function Home({ results }) {
         <div className="container">
             <Seo title="Home" />
             {results?.map((movie) => (//?를 통해 영화가없으면실행안되게할것
-                    <div
+                <div
                         onClick={() => onClick(movie.id, movie.original_title)}
                         className="movie"
                         key={movie.id}
